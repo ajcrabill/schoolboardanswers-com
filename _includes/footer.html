@@ -1,0 +1,48 @@
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">School Board Answers</div>
+      <div class="footer-tagline">Practical answers to school board governance questions</div>
+    </div>
+    <div class="footer-copy">© 2026 School Board Answers</div>
+  </div>
+</footer>
+
+<script>
+  // ── MODAL LOGIC ──
+  function openModal(id) {
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('btn-subscribe-nav').addEventListener('click', e => { e.preventDefault(); openModal('subscribe-modal'); });
+  document.getElementById('btn-submit-question').addEventListener('click', e => { e.preventDefault(); openModal('question-modal'); });
+
+  document.querySelectorAll('.modal-close').forEach(btn => {
+    btn.addEventListener('click', () => closeModal(btn.dataset.close));
+  });
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(overlay.id); });
+  });
+
+  // ── FORMSPREE AJAX SUBMIT ──
+  function wireForm(formId, successId) {
+    const form = document.getElementById(formId);
+    if (!form) return;
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const resp = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (resp.ok) {
+        form.style.display = 'none';
+        document.getElementById(successId).style.display = 'block';
+      }
+    });
+  }
+  wireForm('subscribe-form', 'subscribe-success');
+  wireForm('question-form', 'question-success');
+</script>

@@ -1,0 +1,43 @@
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">SchoolBoard<span>Answers</span></a>
+    <ul class="nav-links">
+      <li><a href="/#topics">Topics</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="#" class="nav-cta-outline" id="btn-submit-question">Submit Question</a></li>
+      <li><a href="#" class="nav-cta" id="btn-subscribe-nav">Subscribe</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── SUBSCRIBE MODAL ── -->
+<div class="modal-overlay" id="subscribe-modal">
+  <div class="modal">
+    <button class="modal-close" data-close="subscribe-modal">×</button>
+    <h3>Get answers in your inbox</h3>
+    <p>New governance Q&As delivered every few days. No noise, no upsells.</p>
+    <form action="https://formspree.io/f/xayzdydv" method="POST" id="subscribe-form">
+      <input type="hidden" name="form" value="schoolboardanswers-subscribe" />
+      <input type="email" name="email" placeholder="Your email address" required />
+      <button type="submit" class="modal-submit">Subscribe</button>
+    </form>
+    <div class="modal-success" id="subscribe-success">✓ You're subscribed. Check your inbox soon.</div>
+  </div>
+</div>
+
+<!-- ── SUBMIT QUESTION MODAL ── -->
+<div class="modal-overlay" id="question-modal">
+  <div class="modal">
+    <button class="modal-close" data-close="question-modal">×</button>
+    <h3>Submit a question</h3>
+    <p>Questions are reviewed and answered within 24–48 hours. We answer every serious governance question we receive.</p>
+    <form action="https://formspree.io/f/xayzdydv" method="POST" id="question-form">
+      <input type="hidden" name="form" value="schoolboardanswers-question" />
+      <input type="text" name="name" placeholder="Your name (optional)" />
+      <input type="email" name="email" placeholder="Your email (optional — for follow-up)" />
+      <textarea name="question" placeholder="What's your governance question?" required></textarea>
+      <button type="submit" class="modal-submit">Submit Question</button>
+    </form>
+    <div class="modal-success" id="question-success">✓ Question received. We'll answer it within 48 hours.</div>
+  </div>
+</div>
